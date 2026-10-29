@@ -1,0 +1,55 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/claims/:id"
+  method: PUT
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+  body:
+    type: json
+    content: |-
+      {
+        "title": "October 2026 Business Travel - Updated"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "CLAIM_LOCKED",
+        "message": "Claim with status 'submitted' cannot be modified. Rule R11 violated.",
+        "claimStatus": "submitted",
+        "rule": "R11"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "claimStatus": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          }
+        }
+      }
+order: 2000

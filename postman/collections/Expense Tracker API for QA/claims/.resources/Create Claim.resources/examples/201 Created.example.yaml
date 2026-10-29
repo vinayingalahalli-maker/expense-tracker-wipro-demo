@@ -1,0 +1,65 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/claims"
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  body:
+    type: json
+    content: |-
+      {
+        "title": "October 2026 Business Travel Expenses",
+        "expenseIds": []
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "clm_p1q2r3s4",
+        "ownerId": "usr_emp123",
+        "title": "October 2026 Business Travel Expenses",
+        "expenseIds": [],
+        "totalEur": 0,
+        "status": "draft",
+        "submittedAt": null,
+        "decidedBy": null,
+        "decidedAt": null,
+        "rejectionReason": null
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "expenseIds": {
+            "type": "array",
+            "items": {}
+          },
+          "totalEur": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+order: 1000

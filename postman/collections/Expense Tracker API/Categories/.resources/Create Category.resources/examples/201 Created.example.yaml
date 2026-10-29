@@ -1,0 +1,30 @@
+$kind: http-example
+name: 201 Created
+order: 1000
+request:
+  method: POST
+  url: "{{baseUrl}}/categories"
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "name": "Travel",
+        "receiptThreshold": 50.00,
+        "active": true
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "cat_7x9k2m4n",
+        "name": "Travel",
+        "receiptThreshold": 50.00,
+        "active": true
+      }

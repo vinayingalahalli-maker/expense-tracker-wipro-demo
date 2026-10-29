@@ -1,0 +1,35 @@
+$kind: http-request
+name: List Claims
+method: GET
+url: "{{baseUrl}}/claims?page=1&pageSize=20"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status code is 200', function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test('Response time is under 2000ms', function () {
+          pm.expect(pm.response.responseTime).to.be.below(2000);
+      });
+
+      pm.test('Response is an array or has items', function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.satisfy(function (data) {
+              return Array.isArray(data) || data.hasOwnProperty('items');
+          });
+      });
+    language: text/javascript
+order: 2000
+queryParams:
+  - key: page
+    value: "1"
+    description: Page number (starts at 1)
+  - key: pageSize
+    value: "20"
+    description: Number of items per page (max 100)
+  - key: status
+    value: draft
+    disabled: true
+    description: Filter by status (draft, submitted, approved, rejected, reimbursed)
+examples: ./.resources/List Claims.resources/examples

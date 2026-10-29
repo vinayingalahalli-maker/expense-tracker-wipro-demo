@@ -1,0 +1,25 @@
+$kind: http-example
+name: 400 Bad Request - Expense In Claim
+order: 2000
+request:
+  method: DELETE
+  url: "{{baseUrl}}/expenses/exp_a1b2c3d4e5"
+  pathVariables:
+    - key: id
+      value: exp_a1b2c3d4e5
+      description: Expense ID
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "EXPENSE_LOCKED",
+        "message": "Expense is part of a claim with status 'approved'. Expenses in submitted, approved, or reimbursed claims cannot be deleted. Rule R11 violated.",
+        "claimId": "clm_p1q2r3s4",
+        "claimStatus": "approved",
+        "rule": "R11"
+      }

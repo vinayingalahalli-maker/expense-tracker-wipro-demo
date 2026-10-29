@@ -1,0 +1,29 @@
+$kind: http-example
+name: 403 Forbidden - Role Required
+order: 3000
+request:
+  method: POST
+  url: "{{baseUrl}}/categories"
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "name": "Travel",
+        "receiptThreshold": 50.00,
+        "active": true
+      }
+response:
+  statusCode: 403
+  statusText: Forbidden
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "INSUFFICIENT_PERMISSIONS",
+        "message": "This operation requires the 'finance' role. Your current role is 'employee'.",
+        "requiredRole": "finance"
+      }

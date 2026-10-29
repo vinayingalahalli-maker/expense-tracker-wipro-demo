@@ -1,0 +1,58 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/expenses"
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  body:
+    type: json
+    content: |-
+      {
+        "amount": 125.5,
+        "currency": "EUR",
+        "amountEur": 125.5,
+        "dateIncurred": "2026-10-15",
+        "categoryId": "cat_7x9k2m4n",
+        "description": "Train ticket from Berlin to Munich",
+        "paymentMethod": "personal",
+        "clientReference": "PROJECT-2026-Q4"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "VALIDATION_ERROR",
+        "message": "Date incurred must not be in the future. Rule R2 violated.",
+        "field": "dateIncurred",
+        "rule": "R2"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          }
+        }
+      }
+order: 2000

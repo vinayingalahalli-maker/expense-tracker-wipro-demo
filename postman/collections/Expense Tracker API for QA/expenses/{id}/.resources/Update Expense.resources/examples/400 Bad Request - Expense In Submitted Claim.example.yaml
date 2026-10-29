@@ -1,0 +1,66 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/expenses/:id"
+  method: PUT
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  pathVariables:
+    - key: id
+      value: exp_a1b2c3d4e5
+      description: Expense ID
+  body:
+    type: json
+    content: |-
+      {
+        "amount": 135,
+        "currency": "EUR",
+        "amountEur": 135,
+        "dateIncurred": "2026-10-15",
+        "categoryId": "cat_7x9k2m4n",
+        "description": "Train ticket from Berlin to Munich (updated fare)",
+        "paymentMethod": "personal",
+        "clientReference": "PROJECT-2026-Q4"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "EXPENSE_LOCKED",
+        "message": "Expense is part of a claim with status 'submitted'. Expenses in submitted, approved, or reimbursed claims cannot be modified. Rule R11 violated.",
+        "claimId": "clm_p1q2r3s4",
+        "claimStatus": "submitted",
+        "rule": "R11"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "claimId": {
+            "type": "string"
+          },
+          "claimStatus": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          }
+        }
+      }
+order: 2000

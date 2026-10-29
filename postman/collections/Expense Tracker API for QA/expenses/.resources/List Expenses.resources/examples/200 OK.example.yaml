@@ -1,0 +1,154 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/expenses?page=1&pageSize=20&dateFrom=2026-10-01&dateTo=2026-10-31&categoryId=cat_7x9k2m4n&inClaim=false"
+  method: GET
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  queryParams:
+    - key: page
+      value: "1"
+      description: Page number (starts at 1)
+    - key: pageSize
+      value: "20"
+      description: Number of items per page (max 100)
+    - key: dateFrom
+      value: 2026-10-01
+      description: Filter by date incurred from (ISO 8601)
+    - key: dateTo
+      value: 2026-10-31
+      description: Filter by date incurred to (ISO 8601)
+    - key: categoryId
+      value: cat_7x9k2m4n
+      description: Filter by category ID
+    - key: inClaim
+      value: "false"
+      description: Filter by claim status (true/false)
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "data": [
+          {
+            "id": "exp_a1b2c3d4e5",
+            "ownerId": "usr_emp123",
+            "amount": 125.5,
+            "currency": "EUR",
+            "amountEur": 125.5,
+            "dateIncurred": "2026-10-15",
+            "categoryId": "cat_7x9k2m4n",
+            "description": "Train ticket from Berlin to Munich",
+            "paymentMethod": "personal",
+            "clientReference": "PROJECT-2026-Q4",
+            "receipts": [
+              "rcpt_x1y2z3"
+            ],
+            "claimId": null,
+            "createdAt": "2026-10-29T09:20:00Z"
+          },
+          {
+            "id": "exp_f6g7h8i9j0",
+            "ownerId": "usr_emp123",
+            "amount": 45,
+            "currency": "EUR",
+            "amountEur": 45,
+            "dateIncurred": "2026-10-20",
+            "categoryId": "cat_8a1b3c5d",
+            "description": "Team lunch meeting",
+            "paymentMethod": "company_card",
+            "clientReference": null,
+            "receipts": [
+              "rcpt_a2b3c4"
+            ],
+            "claimId": "clm_p1q2r3s4",
+            "createdAt": "2026-10-29T10:15:00Z"
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "pageSize": 20,
+          "totalItems": 2,
+          "totalPages": 1
+        }
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "ownerId": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "currency": {
+                  "type": "string"
+                },
+                "amountEur": {
+                  "type": "number"
+                },
+                "dateIncurred": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "categoryId": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "paymentMethod": {
+                  "type": "string"
+                },
+                "clientReference": {
+                  "type": "string"
+                },
+                "receipts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer"
+              },
+              "pageSize": {
+                "type": "integer"
+              },
+              "totalItems": {
+                "type": "integer"
+              },
+              "totalPages": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+order: 1000

@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "expense_tracker_api_sdk"
+version = "1.0.0"
+description = """A REST API for company expense claims. Employees record expenses and group them into claims. Approvers approve or reject claims. Finance maintains categories and marks approved claims as reimbursed.\n\n**Three entities:** Category, Expense, Claim\n**Reporting currency:** EUR (all monetary values exact to 2 decimal places)\n**Authentication:** JWT bearer token with role-based access (employee, approver, finance)\n\n**Status transitions for claims:**\ndraft → submitted → approved/rejected → reimbursed\n\n**Key rules:**\n- Expenses must have receipts when amount exceeds category threshold\n- Claims require at least one expense to submit\n- Expenses can belong to only one claim\n- Date incurred must not be in the future\n- Expenses older than 90 days cannot be added to claims"""
+readme = "PyPI_README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+    "pydantic>=2.0.0,<3.0.0"
+]

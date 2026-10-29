@@ -1,0 +1,24 @@
+$kind: http-request
+name: Remove Receipt
+method: DELETE
+url: "{{baseUrl}}/expenses/:id/receipts/:receiptId"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status code is 204', function () {
+          pm.response.to.have.status(204);
+      });
+
+      pm.test('Response time is under 2000ms', function () {
+          pm.expect(pm.response.responseTime).to.be.below(2000);
+      });
+    language: text/javascript
+order: 7000
+pathVariables:
+  - key: id
+    value: exp_a1b2c3d4e5
+    description: Expense ID
+  - key: receiptId
+    value: rcpt_x1y2z3
+    description: Receipt ID
+examples: ./.resources/Remove Receipt.resources/examples

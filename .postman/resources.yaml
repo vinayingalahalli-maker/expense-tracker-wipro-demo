@@ -1,0 +1,21 @@
+workspace:
+  id: 4569d855-574e-4783-8f0f-1afe91a87c1a
+cloudResources:
+  collections:
+    ../postman/collections/Expense Tracker API: 59255933-481085d5-ebff-40ac-89d2-7fd8d813345d
+    ../postman/collections/Expense Tracker API for QA: 59255933-8d2b4260-06eb-4e6d-b18a-bdbfe9c9cd01
+  environments:
+    ../postman/environments/Local.environment.yaml: 59255933-5e30695c-a23e-4ebc-bad9-89520dbcc527
+    ../postman/environments/Expense Tracker Cloud Mock Environment.environment.yaml: 59255933-f28ccc29-dc79-44bf-ab8d-d4b0216db4c6
+  mocks:
+    ../postman/mocks/expense-tracker-api-mock/config.yaml: 01a186fc-ba3f-733f-8561-3f9a7e6228cb
+  globals:
+    ../postman/globals/workspace.globals.yaml: 83ffd4a5-505f-4a17-8363-1eea5087f674
+  specs:
+    ../postman/specs/Expense Tracker Spec/index.json: 30d721c9-ff1a-4fc1-8f11-72bc4d7dba92
+resourceNameMappings:
+  specs:
+    - ../postman/specs/Expense Tracker Spec/index.json: Expense Tracker Spec
+localResources:
+  specs:
+    - ../postman/specs/Expense Tracker Spec/index.json

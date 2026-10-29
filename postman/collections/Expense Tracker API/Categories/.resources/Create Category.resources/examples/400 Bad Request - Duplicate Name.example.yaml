@@ -1,0 +1,29 @@
+$kind: http-example
+name: 400 Bad Request - Duplicate Name
+order: 2000
+request:
+  method: POST
+  url: "{{baseUrl}}/categories"
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "name": "Travel",
+        "receiptThreshold": 50.00,
+        "active": true
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "DUPLICATE_CATEGORY_NAME",
+        "message": "A category with the name 'Travel' already exists. Category names must be unique.",
+        "field": "name"
+      }

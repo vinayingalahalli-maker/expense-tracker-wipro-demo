@@ -1,0 +1,7 @@
+$kind: collection
+name: Categories
+description: |-
+  Category management operations (Finance role only).
+
+  Categories define expense types with receipt thresholds. Only active categories can be assigned to new expenses.
+order: 1000

@@ -1,0 +1,24 @@
+$kind: http-example
+name: 200 OK
+order: 1000
+request:
+  method: GET
+  url: "{{baseUrl}}/categories/cat_7x9k2m4n"
+  pathVariables:
+    - key: id
+      value: cat_7x9k2m4n
+      description: Category ID
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "cat_7x9k2m4n",
+        "name": "Travel",
+        "receiptThreshold": 50.00,
+        "active": true
+      }

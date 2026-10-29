@@ -1,0 +1,19 @@
+$kind: http-example
+name: 204 No Content
+order: 1000
+request:
+  method: DELETE
+  url: "{{baseUrl}}/expenses/exp_a1b2c3d4e5/receipts/rcpt_x1y2z3"
+  pathVariables:
+    - key: id
+      value: exp_a1b2c3d4e5
+      description: Expense ID
+    - key: receiptId
+      value: rcpt_x1y2z3
+      description: Receipt ID
+response:
+  statusCode: 204
+  statusText: No Content
+  body:
+    type: text
+    content: ""

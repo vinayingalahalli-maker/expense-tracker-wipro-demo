@@ -1,0 +1,117 @@
+{
+  "endpoints": {
+    "/categories": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.CreateCategoryRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tCreateCategoryRequest createCategoryRequest = CreateCategoryRequest.builder()\n\t\t\t.name(\"Travel\")\n\t\t\t.receiptThreshold(50D)\n\t\t\t.active(true)\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.createCategory(createCategoryRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "get": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.ListCategoriesParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tListCategoriesParameters requestParameters = ListCategoriesParameters.builder()\n\t\t\t.page(\"1\")\n\t\t\t.pageSize(\"20\")\n\t\t\t.active(\"true\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.listCategories(requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/categories/{id}": {
+      "get": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.getCategory(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "put": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.UpdateCategoryRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tUpdateCategoryRequest updateCategoryRequest = UpdateCategoryRequest.builder()\n\t\t\t.name(\"Business Travel\")\n\t\t\t.receiptThreshold(75D)\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.updateCategory(\"id\", updateCategoryRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/categories/{id}/retire": {
+      "patch": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.retireCategory(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/expenses": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.CreateExpenseRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tCreateExpenseRequest createExpenseRequest = CreateExpenseRequest.builder()\n\t\t\t.amount(125.5D)\n\t\t\t.currency(\"EUR\")\n\t\t\t.amountEur(125.5D)\n\t\t\t.dateIncurred(\"2026-10-15\")\n\t\t\t.categoryId(\"cat_7x9k2m4n\")\n\t\t\t.description(\"Train ticket from Berlin to Munich\")\n\t\t\t.paymentMethod(\"personal\")\n\t\t\t.clientReference(\"PROJECT-2026-Q4\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.createExpense(createExpenseRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "get": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.ListExpensesParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tListExpensesParameters requestParameters = ListExpensesParameters.builder()\n\t\t\t.page(\"1\")\n\t\t\t.pageSize(\"20\")\n\t\t\t.dateFrom(\"2026-10-01\")\n\t\t\t.dateTo(\"2026-10-31\")\n\t\t\t.categoryId(\"cat_7x9k2m4n\")\n\t\t\t.inClaim(\"false\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.listExpenses(requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/expenses/{id}": {
+      "get": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.getExpense(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "put": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.UpdateExpenseRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tUpdateExpenseRequest updateExpenseRequest = UpdateExpenseRequest.builder()\n\t\t\t.amount(135D)\n\t\t\t.currency(\"EUR\")\n\t\t\t.amountEur(135D)\n\t\t\t.dateIncurred(\"2026-10-15\")\n\t\t\t.categoryId(\"cat_7x9k2m4n\")\n\t\t\t.description(\"Train ticket from Berlin to Munich (updated fare)\")\n\t\t\t.paymentMethod(\"personal\")\n\t\t\t.clientReference(\"PROJECT-2026-Q4\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.updateExpense(\"id\", updateExpenseRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "delete": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.deleteExpense(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/expenses/{id}/receipts": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.AttachReceiptRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tAttachReceiptRequest attachReceiptRequest = AttachReceiptRequest.builder()\n\t\t\t.receiptUrl(\"https://storage.example.com/receipts/train-ticket-oct15.pdf\")\n\t\t\t.fileName(\"train-ticket-oct15.pdf\")\n\t\t\t.contentType(\"application/pdf\")\n\t\t\t.sizeBytes(245678D)\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.attachReceipt(\"id\", attachReceiptRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/expenses/{id}/receipts/{receiptId}": {
+      "delete": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.removeReceipt(\"id\", \"receiptId\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.CreateClaimRequest;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tList<Object> expenseIdsList = Arrays.asList(new Object());\n\t\t\n\t\tCreateClaimRequest createClaimRequest = CreateClaimRequest.builder()\n\t\t\t.title(\"October 2026 Business Travel Expenses\")\n\t\t\t.expenseIds(expenseIdsList)\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.createClaim(createClaimRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "get": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.ListClaimsParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tListClaimsParameters requestParameters = ListClaimsParameters.builder()\n\t\t\t.page(\"1\")\n\t\t\t.pageSize(\"20\")\n\t\t\t.status(\"draft\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.listClaims(requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims/{id}": {
+      "get": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.getClaim(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "put": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.UpdateClaimRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tUpdateClaimRequest updateClaimRequest = UpdateClaimRequest.builder()\n\t\t\t.title(\"October 2026 Business Travel - Updated\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.updateClaim(\"id\", updateClaimRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims/{id}/expenses": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.AddExpenseToClaimRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tAddExpenseToClaimRequest addExpenseToClaimRequest = AddExpenseToClaimRequest.builder()\n\t\t\t.expenseId(\"exp_a1b2c3d4e5\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.addExpenseToClaim(\"id\", addExpenseToClaimRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims/{id}/expenses/{expenseId}": {
+      "delete": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.removeExpenseFromClaim(\"id\", \"expenseId\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims/{id}/submit": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.submitClaim(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims/{id}/approve": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.approveClaim(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims/{id}/reject": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.models.RejectClaimRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tRejectClaimRequest rejectClaimRequest = RejectClaimRequest.builder()\n\t\t\t.rejectionReason(\"Missing receipts for expenses over EUR 50.00. Please attach receipts and resubmit.\")\n\t\t\t.build();\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.rejectClaim(\"id\", rejectClaimRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/claims/{id}/reimburse": {
+      "post": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n\t\tObject response = expenseTrackerApiSdk.expenseTrackerApiSdk.markAsReimbursed(\"id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    }
+  },
+  "methodResponses": {
+    "/categories": {
+      "post": "System.out.println(response);",
+      "get": "System.out.println(response);"
+    },
+    "/categories/{id}": {
+      "get": "System.out.println(response);",
+      "put": "System.out.println(response);"
+    },
+    "/categories/{id}/retire": {
+      "patch": "System.out.println(response);"
+    },
+    "/expenses": {
+      "post": "System.out.println(response);",
+      "get": "System.out.println(response);"
+    },
+    "/expenses/{id}": {
+      "get": "System.out.println(response);",
+      "put": "System.out.println(response);",
+      "delete": "System.out.println(response);"
+    },
+    "/expenses/{id}/receipts": {
+      "post": "System.out.println(response);"
+    },
+    "/expenses/{id}/receipts/{receiptId}": {
+      "delete": "System.out.println(response);"
+    },
+    "/claims": {
+      "post": "System.out.println(response);",
+      "get": "System.out.println(response);"
+    },
+    "/claims/{id}": {
+      "get": "System.out.println(response);",
+      "put": "System.out.println(response);"
+    },
+    "/claims/{id}/expenses": {
+      "post": "System.out.println(response);"
+    },
+    "/claims/{id}/expenses/{expenseId}": {
+      "delete": "System.out.println(response);"
+    },
+    "/claims/{id}/submit": {
+      "post": "System.out.println(response);"
+    },
+    "/claims/{id}/approve": {
+      "post": "System.out.println(response);"
+    },
+    "/claims/{id}/reject": {
+      "post": "System.out.println(response);"
+    },
+    "/claims/{id}/reimburse": {
+      "post": "System.out.println(response);"
+    }
+  },
+  "example": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\nimport com.expensetrackerapisdk.exceptions.ApiError;\nimport com.expensetrackerapisdk.models.ListCategoriesParameters;\n  \npublic class Main {\n  public static void main(String[] args) {\n    ExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n    ExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\n    ListCategoriesParameters requestParameters = ListCategoriesParameters.builder()\n\t\t\t.page(\"1\")\n\t\t\t.pageSize(\"20\")\n\t\t\t.active(\"true\")\n\t\t\t.build();\n\n\n    try {\n      Object response = expenseTrackerApiSdk.expenseTrackerApiSdk.listCategories(requestParameters);\n        \n      System.out.println(response);\n    } catch (ApiError e) {\n      e.printStackTrace();\n    }\n\n    System.exit(0);\n  }\n}\n",
+  "authentication": {
+    "bearer": {
+      "constructor": "import com.expensetrackerapisdk.ExpenseTrackerApiSdk;\nimport com.expensetrackerapisdk.config.ExpenseTrackerApiSdkConfig;\n\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tExpenseTrackerApiSdkConfig config = ExpenseTrackerApiSdkConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tExpenseTrackerApiSdk expenseTrackerApiSdk = new ExpenseTrackerApiSdk(config);\n\t}\n}",
+      "setter": "expenseTrackerApiSdk.setAccessToken('YOUR_ACCESS_TOKEN');"
+    }
+  }
+}

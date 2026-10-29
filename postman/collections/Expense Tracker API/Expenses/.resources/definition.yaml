@@ -1,0 +1,7 @@
+$kind: collection
+name: Expenses
+description: |-
+  Expense management operations (Employee role).
+
+  Employees can create, read, update and delete their own expenses. Expenses can be filtered by date range, category, and claim status.
+order: 2000

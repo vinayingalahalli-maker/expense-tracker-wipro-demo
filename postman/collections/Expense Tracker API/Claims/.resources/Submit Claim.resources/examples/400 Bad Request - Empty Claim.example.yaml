@@ -1,0 +1,24 @@
+$kind: http-example
+name: 400 Bad Request - Empty Claim
+order: 2000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4/submit"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "EMPTY_CLAIM",
+        "message": "A claim must contain at least one expense to be submitted. Rule R6 violated.",
+        "claimId": "clm_p1q2r3s4",
+        "rule": "R6"
+      }

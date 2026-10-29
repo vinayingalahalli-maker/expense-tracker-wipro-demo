@@ -1,0 +1,24 @@
+$kind: http-request
+url: "{{baseUrl}}/claims/:id/submit"
+method: POST
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+settings: {}
+examples: ./.resources/Submit Claim.resources/examples
+order: 1000

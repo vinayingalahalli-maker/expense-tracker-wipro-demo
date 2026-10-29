@@ -1,0 +1,87 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/claims/:id/reject"
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+  body:
+    type: json
+    content: |-
+      {
+        "rejectionReason": "Missing receipts for expenses over EUR 50.00. Please attach receipts and resubmit."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "clm_p1q2r3s4",
+        "ownerId": "usr_emp123",
+        "title": "October 2026 Business Travel Expenses",
+        "expenseIds": [
+          "exp_a1b2c3d4e5",
+          "exp_f6g7h8i9j0"
+        ],
+        "totalEur": 170.5,
+        "status": "rejected",
+        "submittedAt": "2026-10-29T09:20:00Z",
+        "decidedBy": "usr_approver456",
+        "decidedAt": "2026-10-29T10:30:00Z",
+        "rejectionReason": "Missing receipts for expenses over EUR 50.00. Please attach receipts and resubmit."
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "expenseIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "totalEur": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "submittedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "decidedBy": {
+            "type": "string"
+          },
+          "decidedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "rejectionReason": {
+            "type": "string"
+          }
+        }
+      }
+order: 1000

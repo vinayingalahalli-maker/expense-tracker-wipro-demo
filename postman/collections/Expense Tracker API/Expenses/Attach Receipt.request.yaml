@@ -1,0 +1,37 @@
+$kind: http-request
+name: Attach Receipt
+method: POST
+url: "{{baseUrl}}/expenses/:id/receipts"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status code is 201', function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test('Response time is under 2000ms', function () {
+          pm.expect(pm.response.responseTime).to.be.below(2000);
+      });
+
+      pm.test('Response has id field', function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property('id');
+      });
+    language: text/javascript
+order: 6000
+pathVariables:
+  - key: id
+    value: exp_a1b2c3d4e5
+    description: Expense ID
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "receiptUrl": "https://storage.example.com/receipts/train-ticket-oct15.pdf",
+      "fileName": "train-ticket-oct15.pdf",
+      "contentType": "application/pdf",
+      "sizeBytes": 245678
+    }
+examples: ./.resources/Attach Receipt.resources/examples

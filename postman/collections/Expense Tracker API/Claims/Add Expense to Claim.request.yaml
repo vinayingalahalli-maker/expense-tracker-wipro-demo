@@ -1,0 +1,29 @@
+$kind: http-request
+name: Add Expense to Claim
+method: POST
+url: "{{baseUrl}}/claims/:id/expenses"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status code is 200', function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test('Response time is under 2000ms', function () {
+          pm.expect(pm.response.responseTime).to.be.below(2000);
+      });
+    language: text/javascript
+order: 5000
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "expenseId": "exp_a1b2c3d4e5"
+    }
+examples: ./.resources/Add Expense to Claim.resources/examples
