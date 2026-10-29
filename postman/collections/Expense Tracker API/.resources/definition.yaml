@@ -20,7 +20,7 @@ variables:
   baseUrl: https://api.expense-tracker.com/v1
   authToken: ""
 auth:
-  - id: 15b36718-37b9-4ee3-b036-778f0ebe1ad7
+  - id: 4944c057-14c2-41ad-93a9-67d19d99e770
     type: bearer
     name: bearer auth
     credentials:

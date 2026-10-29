@@ -1,0 +1,54 @@
+{
+  "name": "expense-tracker-api-sdk",
+  "version": "1.0.0",
+  "description": "A REST API for company expense claims. Employees record expenses and group them into claims. Approvers approve or reject claims. Finance maintains categories and marks approved claims as reimbursed.  **Three entities:** Category, Expense, Claim **Reporting currency:** EUR (all monetary values exact to 2 decimal places) **Authentication:** JWT bearer token with role-based access (employee, approver, finance)  **Status transitions for claims:** draft → submitted → approved/rejected → reimbursed  **Key rules:** - Expenses must have receipts when amount exceeds category threshold - Claims require at least one expense to submit - Expenses can belong to only one claim - Date incurred must not be in the future - Expenses older than 90 days cannot be added to claims",
+  "source": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "browser": "./dist/index.js",
+  "unpkg": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "tsc --noEmit",
+    "build": "tsup-node src/index.ts --format cjs,esm --dts --clean && node -e \"const fs=require('fs');const path=require('path');function fx(s,d){const dir=path.dirname(s);const c=fs.readFileSync(s,'utf8');const p=c.replace(/((?:from|import)\\s*\\(?\\s*[\\x27\\x22])(\\.\\.?\\/[^\\x27\\x22]+?)([\\x27\\x22])/g,(m,a,b,e)=>{if(/\\.[a-zA-Z0-9]+$/.test(b))return m;const suffix=fs.existsSync(path.join(dir,b)+'.d.ts')?'.js':'/index.js';return a+b+suffix+e});fs.writeFileSync(d,p)};fx('dist/index.d.ts','dist/index.d.mts')\"",
+    "prepublishOnly": "chmod +x ./scripts/prepublish.sh && ./scripts/prepublish.sh && npm run build",
+    "test-example": "cd examples && tsc --noEmit"
+  },
+  "keywords": [
+    "typescript",
+    "sdk",
+    "api",
+    "client"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "",
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "@types/node": "^22.14.0",
+    "tsup": "^6.7.0"
+  },
+  "dependencies": {
+    "zod": "3.22.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  }
+}

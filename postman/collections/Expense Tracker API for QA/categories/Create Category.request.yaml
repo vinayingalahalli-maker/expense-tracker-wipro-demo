@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{baseUrl}}/categories"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Travel",
+      "receiptThreshold": 50,
+      "active": true
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "receiptThreshold": {
+          "type": "integer"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Create Category.resources/examples
+order: 2000

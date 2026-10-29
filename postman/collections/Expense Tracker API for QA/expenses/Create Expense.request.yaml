@@ -1,0 +1,53 @@
+$kind: http-request
+url: "{{baseUrl}}/expenses"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "amount": 125.5,
+      "currency": "EUR",
+      "amountEur": 125.5,
+      "dateIncurred": "2026-10-15",
+      "categoryId": "cat_7x9k2m4n",
+      "description": "Train ticket from Berlin to Munich",
+      "paymentMethod": "personal",
+      "clientReference": "PROJECT-2026-Q4"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "amountEur": {
+          "type": "number"
+        },
+        "dateIncurred": {
+          "type": "string",
+          "format": "date"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "paymentMethod": {
+          "type": "string"
+        },
+        "clientReference": {
+          "type": "string"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Create Expense.resources/examples
+order: 2000

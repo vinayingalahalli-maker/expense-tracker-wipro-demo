@@ -1,0 +1,69 @@
+$kind: http-request
+url: "{{baseUrl}}/expenses/:id"
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: exp_a1b2c3d4e5
+    description: Expense ID
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: json
+  content: |-
+    {
+      "amount": 135,
+      "currency": "EUR",
+      "amountEur": 135,
+      "dateIncurred": "2026-10-15",
+      "categoryId": "cat_7x9k2m4n",
+      "description": "Train ticket from Berlin to Munich (updated fare)",
+      "paymentMethod": "personal",
+      "clientReference": "PROJECT-2026-Q4"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "amountEur": {
+          "type": "integer"
+        },
+        "dateIncurred": {
+          "type": "string",
+          "format": "date"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "paymentMethod": {
+          "type": "string"
+        },
+        "clientReference": {
+          "type": "string"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Update Expense.resources/examples
+order: 3000

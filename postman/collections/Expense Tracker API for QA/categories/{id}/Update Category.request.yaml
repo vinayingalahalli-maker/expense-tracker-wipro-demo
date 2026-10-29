@@ -1,0 +1,44 @@
+$kind: http-request
+url: "{{baseUrl}}/categories/:id"
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: cat_7x9k2m4n
+    description: Category ID
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: json
+  content: |-
+    {
+      "name": "Business Travel",
+      "receiptThreshold": 75
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "receiptThreshold": {
+          "type": "integer"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Update Category.resources/examples
+order: 3000

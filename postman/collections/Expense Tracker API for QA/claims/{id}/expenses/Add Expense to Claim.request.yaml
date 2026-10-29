@@ -1,0 +1,40 @@
+$kind: http-request
+url: "{{baseUrl}}/claims/:id/expenses"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: json
+  content: |-
+    {
+      "expenseId": "exp_a1b2c3d4e5"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "expenseId": {
+          "type": "string"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Add Expense to Claim.resources/examples
+order: 2000

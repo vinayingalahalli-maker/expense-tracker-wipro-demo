@@ -1,0 +1,39 @@
+$kind: http-request
+url: "{{baseUrl}}/expenses/:id/receipts/:receiptId"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: exp_a1b2c3d4e5
+    description: Expense ID
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+  - key: receiptId
+    value: rcpt_x1y2z3
+    description: Receipt ID
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+settings: {}
+examples: ./.resources/Remove Receipt.resources/examples
+order: 1000

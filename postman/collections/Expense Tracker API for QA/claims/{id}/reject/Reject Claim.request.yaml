@@ -1,0 +1,40 @@
+$kind: http-request
+url: "{{baseUrl}}/claims/:id/reject"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: json
+  content: |-
+    {
+      "rejectionReason": "Missing receipts for expenses over EUR 50.00. Please attach receipts and resubmit."
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "rejectionReason": {
+          "type": "string"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Reject Claim.resources/examples
+order: 1000

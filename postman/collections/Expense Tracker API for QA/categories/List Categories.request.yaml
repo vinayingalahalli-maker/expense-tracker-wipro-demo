@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/categories?page=1&pageSize=20&active=true"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: "1"
+    description: Page number (starts at 1)
+    $type: integer
+  - key: pageSize
+    value: "20"
+    description: Number of items per page (max 100)
+    $type: integer
+  - key: active
+    value: "true"
+    description: Filter by active status (true/false)
+    $type: boolean
+settings: {}
+examples: ./.resources/List Categories.resources/examples
+order: 3000

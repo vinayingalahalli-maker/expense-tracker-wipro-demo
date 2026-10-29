@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{baseUrl}}/claims"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "October 2026 Business Travel Expenses",
+      "expenseIds": []
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "expenseIds": {
+          "type": "array",
+          "items": {}
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Create Claim.resources/examples
+order: 2000
