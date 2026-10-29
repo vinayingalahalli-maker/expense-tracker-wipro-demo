@@ -1,0 +1,59 @@
+$kind: http-example
+name: 200 OK
+order: 1000
+request:
+  method: GET
+  url: "{{baseUrl}}/categories?page=1&pageSize=20"
+  queryParams:
+    - key: page
+      value: "1"
+      description: Page number (starts at 1)
+    - key: pageSize
+      value: "20"
+      description: Number of items per page (max 100)
+    - key: active
+      value: "true"
+      disabled: true
+      description: Filter by active status (true/false)
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "data": [
+          {
+            "id": "cat_7x9k2m4n",
+            "name": "Travel",
+            "receiptThreshold": 50.00,
+            "active": true
+          },
+          {
+            "id": "cat_8a1b3c5d",
+            "name": "Meals",
+            "receiptThreshold": 25.00,
+            "active": true
+          },
+          {
+            "id": "cat_9e2f4g6h",
+            "name": "Office Supplies",
+            "receiptThreshold": 100.00,
+            "active": true
+          },
+          {
+            "id": "cat_1h3j5k7m",
+            "name": "Accommodation",
+            "receiptThreshold": 0.00,
+            "active": true
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "pageSize": 20,
+          "totalItems": 4,
+          "totalPages": 1
+        }
+      }

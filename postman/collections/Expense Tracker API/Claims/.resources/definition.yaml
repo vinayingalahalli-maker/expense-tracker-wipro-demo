@@ -1,0 +1,7 @@
+$kind: collection
+name: Claims
+description: |-
+  Claim management operations (Employee, Approver, and Finance roles).
+
+  Employees create and manage claims in draft status. Approvers approve or reject submitted claims. Finance marks approved claims as reimbursed.
+order: 3000

@@ -1,0 +1,17 @@
+$kind: http-request
+name: List Claims
+method: GET
+url: "{{baseUrl}}/claims?page=1&pageSize=20"
+order: 2000
+queryParams:
+  - key: page
+    value: "1"
+    description: Page number (starts at 1)
+  - key: pageSize
+    value: "20"
+    description: Number of items per page (max 100)
+  - key: status
+    value: draft
+    disabled: true
+    description: Filter by status (draft, submitted, approved, rejected, reimbursed)
+examples: ./.resources/List Claims.resources/examples

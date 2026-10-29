@@ -1,0 +1,18 @@
+$kind: http-request
+name: Update Claim
+method: PUT
+url: "{{baseUrl}}/claims/:id"
+order: 4000
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "October 2026 Business Travel - Updated"
+    }
+examples: ./.resources/Update Claim.resources/examples

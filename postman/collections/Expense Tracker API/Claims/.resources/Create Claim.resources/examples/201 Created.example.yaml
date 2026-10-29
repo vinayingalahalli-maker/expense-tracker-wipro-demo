@@ -1,0 +1,35 @@
+$kind: http-example
+name: 201 Created
+order: 1000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims"
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "title": "October 2026 Business Travel Expenses",
+        "expenseIds": []
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "clm_p1q2r3s4",
+        "ownerId": "usr_emp123",
+        "title": "October 2026 Business Travel Expenses",
+        "expenseIds": [],
+        "totalEur": 0.00,
+        "status": "draft",
+        "submittedAt": null,
+        "decidedBy": null,
+        "decidedAt": null,
+        "rejectionReason": null
+      }

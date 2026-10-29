@@ -1,0 +1,13 @@
+$kind: http-request
+name: Remove Receipt
+method: DELETE
+url: "{{baseUrl}}/expenses/:id/receipts/:receiptId"
+order: 7000
+pathVariables:
+  - key: id
+    value: exp_a1b2c3d4e5
+    description: Expense ID
+  - key: receiptId
+    value: rcpt_x1y2z3
+    description: Receipt ID
+examples: ./.resources/Remove Receipt.resources/examples

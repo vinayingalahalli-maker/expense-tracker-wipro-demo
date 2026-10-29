@@ -1,0 +1,5 @@
+name: Expense Tracker Cloud Mock Environment
+values:
+  - key: baseUrl
+    value: https://006f591f-18f8-44ad-a564-d65e70f6456d.mock.pstmn.io
+color: 120

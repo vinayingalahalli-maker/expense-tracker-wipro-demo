@@ -1,0 +1,32 @@
+$kind: http-example
+name: 403 Forbidden - Own Claim
+order: 3000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4/reject"
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+  body:
+    type: json
+    content: |-
+      {
+        "rejectionReason": "Missing receipts for expenses over EUR 50.00. Please attach receipts and resubmit."
+      }
+response:
+  statusCode: 403
+  statusText: Forbidden
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "CANNOT_REJECT_OWN_CLAIM",
+        "message": "An approver cannot approve or reject their own claim. Rule R12 violated.",
+        "claimId": "clm_p1q2r3s4",
+        "rule": "R12"
+      }

@@ -1,0 +1,33 @@
+$kind: http-example
+name: 200 OK
+order: 1000
+request:
+  method: DELETE
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4/expenses/exp_a1b2c3d4e5"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+    - key: expenseId
+      value: exp_a1b2c3d4e5
+      description: Expense ID
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "clm_p1q2r3s4",
+        "ownerId": "usr_emp123",
+        "title": "October 2026 Business Travel Expenses",
+        "expenseIds": [],
+        "totalEur": 0.00,
+        "status": "draft",
+        "submittedAt": null,
+        "decidedBy": null,
+        "decidedAt": null,
+        "rejectionReason": null
+      }

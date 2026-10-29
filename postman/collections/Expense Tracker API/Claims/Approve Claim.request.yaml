@@ -1,0 +1,10 @@
+$kind: http-request
+name: Approve Claim
+method: POST
+url: "{{baseUrl}}/claims/:id/approve"
+order: 8000
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+examples: ./.resources/Approve Claim.resources/examples

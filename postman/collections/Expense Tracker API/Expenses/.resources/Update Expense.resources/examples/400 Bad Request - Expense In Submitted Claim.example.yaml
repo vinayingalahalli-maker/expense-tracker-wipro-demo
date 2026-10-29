@@ -1,0 +1,40 @@
+$kind: http-example
+name: 400 Bad Request - Expense In Submitted Claim
+order: 2000
+request:
+  method: PUT
+  url: "{{baseUrl}}/expenses/exp_a1b2c3d4e5"
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    - key: id
+      value: exp_a1b2c3d4e5
+      description: Expense ID
+  body:
+    type: json
+    content: |-
+      {
+        "amount": 135.00,
+        "currency": "EUR",
+        "amountEur": 135.00,
+        "dateIncurred": "2026-10-15",
+        "categoryId": "cat_7x9k2m4n",
+        "description": "Train ticket from Berlin to Munich (updated fare)",
+        "paymentMethod": "personal",
+        "clientReference": "PROJECT-2026-Q4"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "EXPENSE_LOCKED",
+        "message": "Expense is part of a claim with status 'submitted'. Expenses in submitted, approved, or reimbursed claims cannot be modified. Rule R11 violated.",
+        "claimId": "clm_p1q2r3s4",
+        "claimStatus": "submitted",
+        "rule": "R11"
+      }

@@ -1,0 +1,35 @@
+$kind: http-example
+name: 400 Bad Request - Inactive Category
+order: 3000
+request:
+  method: POST
+  url: "{{baseUrl}}/expenses"
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "amount": 125.50,
+        "currency": "EUR",
+        "amountEur": 125.50,
+        "dateIncurred": "2026-10-15",
+        "categoryId": "cat_7x9k2m4n",
+        "description": "Train ticket from Berlin to Munich",
+        "paymentMethod": "personal",
+        "clientReference": "PROJECT-2026-Q4"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "INACTIVE_CATEGORY",
+        "message": "Category 'cat_7x9k2m4n' is not active. Only active categories can be assigned to new expenses. Rule R3 violated.",
+        "field": "categoryId",
+        "rule": "R3"
+      }

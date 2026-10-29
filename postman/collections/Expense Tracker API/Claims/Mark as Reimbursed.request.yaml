@@ -1,0 +1,10 @@
+$kind: http-request
+name: Mark as Reimbursed
+method: POST
+url: "{{baseUrl}}/claims/:id/reimburse"
+order: 10000
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+examples: ./.resources/Mark as Reimbursed.resources/examples

@@ -1,0 +1,16 @@
+$kind: http-request
+name: Create Category
+method: POST
+url: "{{baseUrl}}/categories"
+order: 1000
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Travel",
+      "receiptThreshold": 50.00,
+      "active": true
+    }
+examples: ./.resources/Create Category.resources/examples

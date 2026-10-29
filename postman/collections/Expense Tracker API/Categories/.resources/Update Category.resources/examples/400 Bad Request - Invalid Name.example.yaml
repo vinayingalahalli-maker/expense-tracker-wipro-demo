@@ -1,0 +1,33 @@
+$kind: http-example
+name: 400 Bad Request - Invalid Name
+order: 2000
+request:
+  method: PUT
+  url: "{{baseUrl}}/categories/cat_7x9k2m4n"
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    - key: id
+      value: cat_7x9k2m4n
+      description: Category ID
+  body:
+    type: json
+    content: |-
+      {
+        "name": "Business Travel",
+        "receiptThreshold": 75.00
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "VALIDATION_ERROR",
+        "message": "Category name must be between 1 and 50 characters.",
+        "field": "name",
+        "constraint": "length"
+      }

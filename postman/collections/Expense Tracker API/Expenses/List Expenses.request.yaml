@@ -1,0 +1,29 @@
+$kind: http-request
+name: List Expenses
+method: GET
+url: "{{baseUrl}}/expenses?page=1&pageSize=20"
+order: 2000
+queryParams:
+  - key: page
+    value: "1"
+    description: Page number (starts at 1)
+  - key: pageSize
+    value: "20"
+    description: Number of items per page (max 100)
+  - key: dateFrom
+    value: 2026-10-01
+    disabled: true
+    description: Filter by date incurred from (ISO 8601)
+  - key: dateTo
+    value: 2026-10-31
+    disabled: true
+    description: Filter by date incurred to (ISO 8601)
+  - key: categoryId
+    value: cat_7x9k2m4n
+    disabled: true
+    description: Filter by category ID
+  - key: inClaim
+    value: "false"
+    disabled: true
+    description: Filter by claim status (true/false)
+examples: ./.resources/List Expenses.resources/examples

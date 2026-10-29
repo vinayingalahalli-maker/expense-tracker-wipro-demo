@@ -1,0 +1,33 @@
+$kind: http-example
+name: 400 Bad Request - Expense Too Old
+order: 3000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4/expenses"
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+  body:
+    type: json
+    content: |-
+      {
+        "expenseId": "exp_a1b2c3d4e5"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "EXPENSE_TOO_OLD",
+        "message": "Expense with date incurred '2026-07-15' is more than 90 days old and cannot be added to a claim. Rule R4 violated.",
+        "expenseId": "exp_a1b2c3d4e5",
+        "dateIncurred": "2026-07-15",
+        "rule": "R4"
+      }

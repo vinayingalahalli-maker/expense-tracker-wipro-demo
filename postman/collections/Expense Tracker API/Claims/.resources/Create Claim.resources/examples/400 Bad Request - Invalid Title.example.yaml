@@ -1,0 +1,29 @@
+$kind: http-example
+name: 400 Bad Request - Invalid Title
+order: 2000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims"
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "title": "October 2026 Business Travel Expenses",
+        "expenseIds": []
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "VALIDATION_ERROR",
+        "message": "Claim title must be between 1 and 100 characters.",
+        "field": "title",
+        "constraint": "length"
+      }

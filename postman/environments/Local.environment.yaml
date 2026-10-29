@@ -1,0 +1,7 @@
+name: Local Environment
+values:
+  - key: baseUrl
+    value: 'http://localhost:4500'
+  - key: authToken
+    secret: true
+color: 240

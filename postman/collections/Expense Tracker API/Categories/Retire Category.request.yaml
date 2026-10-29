@@ -1,0 +1,10 @@
+$kind: http-request
+name: Retire Category
+method: PATCH
+url: "{{baseUrl}}/categories/:id/retire"
+order: 5000
+pathVariables:
+  - key: id
+    value: cat_7x9k2m4n
+    description: Category ID
+examples: ./.resources/Retire Category.resources/examples

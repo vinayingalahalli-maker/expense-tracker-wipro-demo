@@ -1,0 +1,17 @@
+$kind: http-request
+name: List Categories
+method: GET
+url: "{{baseUrl}}/categories?page=1&pageSize=20"
+order: 2000
+queryParams:
+  - key: page
+    value: "1"
+    description: Page number (starts at 1)
+  - key: pageSize
+    value: "20"
+    description: Number of items per page (max 100)
+  - key: active
+    value: "true"
+    disabled: true
+    description: Filter by active status (true/false)
+examples: ./.resources/List Categories.resources/examples

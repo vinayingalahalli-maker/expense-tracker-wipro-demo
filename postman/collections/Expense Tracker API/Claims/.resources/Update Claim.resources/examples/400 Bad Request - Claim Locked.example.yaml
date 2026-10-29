@@ -1,0 +1,32 @@
+$kind: http-example
+name: 400 Bad Request - Claim Locked
+order: 2000
+request:
+  method: PUT
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4"
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+  body:
+    type: json
+    content: |-
+      {
+        "title": "October 2026 Business Travel - Updated"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "CLAIM_LOCKED",
+        "message": "Claim with status 'submitted' cannot be modified. Rule R11 violated.",
+        "claimStatus": "submitted",
+        "rule": "R11"
+      }

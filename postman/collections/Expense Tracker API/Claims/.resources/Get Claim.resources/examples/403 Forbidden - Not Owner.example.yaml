@@ -1,0 +1,23 @@
+$kind: http-example
+name: 403 Forbidden - Not Owner
+order: 2000
+request:
+  method: GET
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+response:
+  statusCode: 403
+  statusText: Forbidden
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "FORBIDDEN",
+        "message": "You cannot access a claim owned by another employee. Rule R15 violated.",
+        "rule": "R15"
+      }

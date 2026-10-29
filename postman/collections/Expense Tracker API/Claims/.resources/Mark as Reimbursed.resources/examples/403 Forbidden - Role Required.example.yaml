@@ -1,0 +1,23 @@
+$kind: http-example
+name: 403 Forbidden - Role Required
+order: 3000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4/reimburse"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+response:
+  statusCode: 403
+  statusText: Forbidden
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "INSUFFICIENT_PERMISSIONS",
+        "message": "This operation requires the 'finance' role. Your current role is 'approver'.",
+        "requiredRole": "finance"
+      }

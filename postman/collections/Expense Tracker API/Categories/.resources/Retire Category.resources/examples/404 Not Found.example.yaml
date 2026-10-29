@@ -1,0 +1,23 @@
+$kind: http-example
+name: 404 Not Found
+order: 2000
+request:
+  method: PATCH
+  url: "{{baseUrl}}/categories/cat_invalid/retire"
+  pathVariables:
+    - key: id
+      value: cat_7x9k2m4n
+      description: Category ID
+response:
+  statusCode: 404
+  statusText: Not Found
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "CATEGORY_NOT_FOUND",
+        "message": "Category with ID 'cat_invalid' does not exist.",
+        "categoryId": "cat_invalid"
+      }

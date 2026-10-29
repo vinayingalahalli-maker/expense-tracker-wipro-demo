@@ -1,0 +1,24 @@
+$kind: http-example
+name: 400 Bad Request - Invalid Status
+order: 2000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4/reimburse"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "INVALID_STATUS_TRANSITION",
+        "message": "Cannot mark a claim as reimbursed with status 'submitted'. Only claims with status 'approved' can be marked as reimbursed. Rule R9 violated.",
+        "currentStatus": "submitted",
+        "rule": "R9"
+      }

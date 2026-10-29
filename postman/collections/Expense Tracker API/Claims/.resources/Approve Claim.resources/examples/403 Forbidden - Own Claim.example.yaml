@@ -1,0 +1,24 @@
+$kind: http-example
+name: 403 Forbidden - Own Claim
+order: 3000
+request:
+  method: POST
+  url: "{{baseUrl}}/claims/clm_p1q2r3s4/approve"
+  pathVariables:
+    - key: id
+      value: clm_p1q2r3s4
+      description: Claim ID
+response:
+  statusCode: 403
+  statusText: Forbidden
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "CANNOT_APPROVE_OWN_CLAIM",
+        "message": "An approver cannot approve or reject their own claim. Rule R12 violated.",
+        "claimId": "clm_p1q2r3s4",
+        "rule": "R12"
+      }

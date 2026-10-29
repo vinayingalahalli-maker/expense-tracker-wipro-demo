@@ -1,0 +1,27 @@
+$kind: collection
+name: Expense Tracker API
+description: |-
+  A REST API for company expense claims. Employees record expenses and group them into claims. Approvers approve or reject claims. Finance maintains categories and marks approved claims as reimbursed.
+
+  **Three entities:** Category, Expense, Claim
+  **Reporting currency:** EUR (all monetary values exact to 2 decimal places)
+  **Authentication:** JWT bearer token with role-based access (employee, approver, finance)
+
+  **Status transitions for claims:**
+  draft → submitted → approved/rejected → reimbursed
+
+  **Key rules:**
+  - Expenses must have receipts when amount exceeds category threshold
+  - Claims require at least one expense to submit
+  - Expenses can belong to only one claim
+  - Date incurred must not be in the future
+  - Expenses older than 90 days cannot be added to claims
+variables:
+  baseUrl: https://api.expense-tracker.com/v1
+  authToken: ""
+auth:
+  - id: 15b36718-37b9-4ee3-b036-778f0ebe1ad7
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{authToken}}"

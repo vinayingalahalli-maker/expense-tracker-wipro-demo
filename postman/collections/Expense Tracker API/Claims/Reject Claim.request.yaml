@@ -1,0 +1,18 @@
+$kind: http-request
+name: Reject Claim
+method: POST
+url: "{{baseUrl}}/claims/:id/reject"
+order: 9000
+pathVariables:
+  - key: id
+    value: clm_p1q2r3s4
+    description: Claim ID
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "rejectionReason": "Missing receipts for expenses over EUR 50.00. Please attach receipts and resubmit."
+    }
+examples: ./.resources/Reject Claim.resources/examples

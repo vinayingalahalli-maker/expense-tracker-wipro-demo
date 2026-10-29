@@ -1,0 +1,26 @@
+$kind: http-example
+name: 404 Not Found
+order: 2000
+request:
+  method: DELETE
+  url: "{{baseUrl}}/expenses/exp_a1b2c3d4e5/receipts/rcpt_invalid"
+  pathVariables:
+    - key: id
+      value: exp_a1b2c3d4e5
+      description: Expense ID
+    - key: receiptId
+      value: rcpt_x1y2z3
+      description: Receipt ID
+response:
+  statusCode: 404
+  statusText: Not Found
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "error": "RECEIPT_NOT_FOUND",
+        "message": "Receipt with ID 'rcpt_invalid' does not exist on this expense.",
+        "receiptId": "rcpt_invalid"
+      }
